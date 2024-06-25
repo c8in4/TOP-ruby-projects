@@ -13,7 +13,7 @@ def caesar_cipher(str, shift)
   }
   
   arr_of_shifted_numbers = arr_of_ASCII.map { |element|
-    unless element.is_a?(String)
+    if element.is_a?(Numeric)
       if element.between?(ASCII_CODE_A, ASCII_CODE_Z)
         shift_chars(element, shift, ASCII_CODE_A, ASCII_CODE_Z)
       elsif element.between?(ASCII_CODE_a, ASCII_CODE_z)
