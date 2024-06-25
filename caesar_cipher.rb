@@ -14,9 +14,9 @@ def caesar_cipher(str, shift)
   
   arr_of_shifted_numbers = arr_of_ASCII.map { |element|
     unless element.is_a?(String)
-      if element >= ASCII_CODE_A && element <= ASCII_CODE_Z
+      if element.between?(ASCII_CODE_A, ASCII_CODE_Z)
         shift_chars(element, shift, ASCII_CODE_A, ASCII_CODE_Z)
-      elsif element >= ASCII_CODE_a && element <= ASCII_CODE_z
+      elsif element.between?(ASCII_CODE_a, ASCII_CODE_z)
         shift_chars(element, shift, ASCII_CODE_a, ASCII_CODE_z)
       end
     else
@@ -28,7 +28,6 @@ def caesar_cipher(str, shift)
     element.is_a?(String) ? element : element.chr
   }.join("")
 end
-
 
 def shift_chars(num, shift, range_bottom, range_top)
   shifted_char = num + shift
@@ -43,16 +42,13 @@ def shift_chars(num, shift, range_bottom, range_top)
   shifted_char
 end
 
-# puts "Enter a word or phrase:"
-# str = gets.chomp
-# puts "Enter a number:"
-# offset = gets.chomp.to_i
+puts "Enter a word or phrase:"
+str = gets.chomp
+puts "Enter a number:"
+offset = gets.chomp.to_i
 
-# p str
-# p caesar_cipher(str, offset)
+p str
+p caesar_cipher(str, offset)
 
-# p "AaBbCc XxYyZz"
-# p caesar_cipher("AaBbCc XxYyZz", offset)
-
-p caesar_cipher("What a string!", 5)
+# p caesar_cipher("What a string!", 5)
 # => "Bmfy f xywnsl!"
